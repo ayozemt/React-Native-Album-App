@@ -31,6 +31,7 @@ const AlbumCard = ({ albums, navigation, deleteAlbum }) => {
 
   return (
     <FlatList
+      style={styles.list}
       data={albums}
       renderItem={({ item, index }) => (
         <TouchableOpacity
@@ -62,11 +63,14 @@ const AlbumCard = ({ albums, navigation, deleteAlbum }) => {
 };
 
 const styles = StyleSheet.create({
+  list: {
+    paddingTop: 10,
+    marginBottom: 55,
+  },
   itemContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 20,
     marginLeft: 40,
     marginRight: 40,
     backgroundColor: "rgba(0,0,0,0.5)",
