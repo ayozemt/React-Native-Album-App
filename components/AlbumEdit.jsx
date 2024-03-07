@@ -30,11 +30,12 @@ const AlbumEdit = ({ editAlbum, album }) => {
     const albumPhotoUrl = photoUrl ? photoUrl : defaultPhotoUrl;
 
     const editedAlbum = {
-      id: album.id,  //No tener aquí el id era lo que hacía que no funcionara la edición
+      id: album.id,
       title,
       artist,
       year,
       photoUrl: albumPhotoUrl,
+      rating: album.rating, //No tenerlo aquí borraba la valoración al editar
     };
     editAlbum(editedAlbum);
   };
