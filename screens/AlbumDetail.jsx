@@ -18,6 +18,7 @@ const AlbumDetail = ({ navigation, route }) => {
   const [albumData, setAlbumData] = useState(album);
   const { albums, setAlbums } = useContext(AlbumContext);
   const [showForm, setShowForm] = useState(false);
+  const [rating, setRating] = useState(albumData.rating);
 
   const editAlbum = (editedAlbum) => {
     const updatedAlbums = albums.map((albumItem) =>
@@ -26,6 +27,17 @@ const AlbumDetail = ({ navigation, route }) => {
     setAlbums(updatedAlbums);
     setAlbumData(editedAlbum);
     toggleShowForm();
+  };
+
+  const handleRating = (newRating) => {
+    setRating(newRating);
+    // Update album rating in the context
+    const updatedAlbums = albums.map((albumItem) =>
+      albumItem.id === albumData.id
+        ? { ...albumItem, rating: newRating }
+        : albumItem
+    );
+    setAlbums(updatedAlbums);
   };
 
   const toggleShowForm = () => {
@@ -52,6 +64,17 @@ const AlbumDetail = ({ navigation, route }) => {
             <Text style={styles.title}>{albumData.title}</Text>
             <Text style={styles.artist}>{albumData.artist}</Text>
             <Text style={styles.year}>{albumData.year}</Text>
+            <View style={styles.ratingContainer}>
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Text
+                  key={star}
+                  style={[styles.starIcon, star <= rating && styles.filledStar]}
+                  onPress={() => handleRating(star)}
+                >
+                  ★
+                </Text>
+              ))}
+            </View>
           </View>
         </ScrollView>
       </ImageBackground>
@@ -74,18 +97,19 @@ const styles = StyleSheet.create({
   },
   scrollViewContent: {
     flexGrow: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
   },
   information: {
     backgroundColor: "rgba(0,0,0,0.5)",
     flex: 1,
-    justifyContent: "center",
+    paddingTop: 50,
+    // justifyContent: "center",
   },
   albumImage: {
     width: 300,
     height: 300,
     alignSelf: "center",
-    marginTop: 20,
+    marginTop: 40,
     borderWidth: 2,
     borderColor: "rgba(255,255,255,0.5)",
     borderRadius: 10,
@@ -114,6 +138,23 @@ const styles = StyleSheet.create({
     textAlign: "center",
     padding: 10,
     color: "white",
+    textShadowColor: "white",
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 10,
+  },
+  ratingContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    // alignItems: "center",
+    paddingLeft: 5,
+  },
+  starIcon: {
+    fontSize: 50,
+    color: "#ccc",
+    marginRight: 5,
+  },
+  filledStar: {
+    color: "#ffd700",
     textShadowColor: "white",
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
