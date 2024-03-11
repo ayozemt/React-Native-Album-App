@@ -38,7 +38,7 @@ const AlbumDetail = ({ navigation, route }) => {
         : albumItem
     );
     setAlbums(updatedAlbums);
-    setAlbumData({ ...album, rating: newRating });
+    setAlbumData({ ...albumData, rating: newRating });
   };
 
   const toggleShowForm = () => {
