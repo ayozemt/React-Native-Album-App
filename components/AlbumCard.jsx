@@ -36,7 +36,7 @@ const AlbumCard = ({ albums, navigation, deleteAlbum }) => {
       renderItem={({ item, index }) => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("AlbumDetail", { album: item });
+            navigation.navigate("AlbumDetail", { albumId: item.id });
           }}
         >
           <View style={styles.itemContainer}>

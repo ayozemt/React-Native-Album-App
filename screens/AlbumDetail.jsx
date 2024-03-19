@@ -14,9 +14,10 @@ import AlbumEdit from "../components/AlbumEdit";
 import { AlbumContext } from "../context/album.context";
 
 const AlbumDetail = ({ navigation, route }) => {
-  const { album } = route.params;
-  const [albumData, setAlbumData] = useState(album);
+  const { albumId } = route.params;
   const { albums, setAlbums } = useContext(AlbumContext);
+  const album = albums.find((album) => album.id === albumId);
+  const [albumData, setAlbumData] = useState(album);
   const [showForm, setShowForm] = useState(false);
   const [rating, setRating] = useState(albumData.rating);
 
