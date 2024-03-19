@@ -10,7 +10,7 @@ import {
 
 import AlbumCard from "../components/AlbumCard";
 import AlbumNew from "../components/AlbumNew";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AlbumContext } from "../context/album.context";
 import Toolbar from "../components/Toolbar";
 
@@ -19,10 +19,13 @@ const AlbumList = ({ navigation }) => {
   const [showForm, setShowForm] = useState(false);
   const [filteredAlbums, setFilteredAlbums] = useState(albums);
 
+  useEffect(() => {
+    setFilteredAlbums(albums);
+  }, [albums]);
+
   const addNewAlbum = (newAlbum) => {
     const updatedAlbums = [newAlbum, ...albums];
     setAlbums(updatedAlbums);
-    setFilteredAlbums(updatedAlbums);
     toggleShowForm();
   };
 
@@ -30,7 +33,6 @@ const AlbumList = ({ navigation }) => {
     const updatedAlbums = [...albums];
     updatedAlbums.splice(index, 1);
     setAlbums(updatedAlbums);
-    setFilteredAlbums(updatedAlbums);
   };
 
   const toggleShowForm = () => {
