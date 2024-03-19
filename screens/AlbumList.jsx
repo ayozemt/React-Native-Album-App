@@ -12,14 +12,17 @@ import AlbumCard from "../components/AlbumCard";
 import AlbumNew from "../components/AlbumNew";
 import { useState, useContext } from "react";
 import { AlbumContext } from "../context/album.context";
+import Toolbar from "../components/Toolbar";
 
 const AlbumList = ({ navigation }) => {
   const { albums, setAlbums } = useContext(AlbumContext);
   const [showForm, setShowForm] = useState(false);
+  const [filteredAlbums, setFilteredAlbums] = useState(albums);
 
   const addNewAlbum = (newAlbum) => {
     const updatedAlbums = [newAlbum, ...albums];
     setAlbums(updatedAlbums);
+    setFilteredAlbums(updatedAlbums);
     toggleShowForm();
   };
 
@@ -27,10 +30,31 @@ const AlbumList = ({ navigation }) => {
     const updatedAlbums = [...albums];
     updatedAlbums.splice(index, 1);
     setAlbums(updatedAlbums);
+    setFilteredAlbums(updatedAlbums);
   };
 
   const toggleShowForm = () => {
     setShowForm(!showForm);
+  };
+
+  const handleSortAscending = () => {
+    const sortedAlbums = [...filteredAlbums].sort((a, b) => a.year - b.year);
+    setFilteredAlbums(sortedAlbums);
+  };
+
+  const handleSortDescending = () => {
+    const sortedAlbums = [...filteredAlbums].sort((a, b) => b.year - a.year);
+    setFilteredAlbums(sortedAlbums);
+  };
+
+  const handleSearch = (searchQuery) => {
+    const filteredAlbums = albums.filter(
+      (album) =>
+        album.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        album.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        album.year.toString().includes(searchQuery.toLowerCase())
+    );
+    setFilteredAlbums(filteredAlbums);
   };
 
   return (
@@ -38,18 +62,25 @@ const AlbumList = ({ navigation }) => {
       source={require("../assets/background.jpeg")}
       style={styles.backgroundImage}
     >
+      <Toolbar
+        onNewAlbum={toggleShowForm}
+        onSortAscending={handleSortAscending}
+        onSortDescending={handleSortDescending}
+        onSearch={handleSearch}
+        showForm={showForm}
+      />
       <View style={styles.container}>
         {showForm && <AlbumNew addNewAlbum={addNewAlbum} />}
-        <Button
+        {/* <Button
           title={!showForm ? "Click here to add a new album" : "Hide Form"}
           onPress={toggleShowForm}
-        />
+        /> */}
         <AlbumCard
-          albums={albums}
+          albums={filteredAlbums}
           navigation={navigation}
           deleteAlbum={deleteAlbum}
         />
-        <StatusBar style="auto" />
+        {/* <StatusBar style="auto" /> */}
       </View>
     </ImageBackground>
   );
