@@ -24,13 +24,13 @@ const AlbumList = ({ navigation }) => {
   }, [albums]);
 
   const addNewAlbum = (newAlbum) => {
-    const updatedAlbums = [newAlbum, ...albums];
+    const updatedAlbums = [newAlbum, ...filteredAlbums];
     setAlbums(updatedAlbums);
     toggleShowForm();
   };
 
   const deleteAlbum = (index) => {
-    const updatedAlbums = [...albums];
+    const updatedAlbums = [...filteredAlbums];
     updatedAlbums.splice(index, 1);
     setAlbums(updatedAlbums);
   };
