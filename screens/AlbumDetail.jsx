@@ -12,6 +12,7 @@ import {
 import { useState, useContext } from "react";
 import AlbumEdit from "../components/AlbumEdit";
 import { AlbumContext } from "../context/album.context";
+import EditionBar from "../components/EditionBar";
 
 const AlbumDetail = ({ navigation, route }) => {
   const { albumId } = route.params;
@@ -52,12 +53,17 @@ const AlbumDetail = ({ navigation, route }) => {
         source={require("../assets/background.jpeg")}
         style={styles.backgroundImage}
       >
+        <EditionBar
+          onEditAlbum={toggleShowForm}
+          showForm={showForm}
+          navigation={navigation}
+        />
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
           {showForm && <AlbumEdit editAlbum={editAlbum} album={albumData} />}
-          <Button
+          {/* <Button
             title={!showForm ? "Click here to edit this album" : "Hide Form"}
             onPress={toggleShowForm}
-          />
+          /> */}
           <View style={styles.information}>
             <Image
               source={{ uri: albumData.photoUrl }}
