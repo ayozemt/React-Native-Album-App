@@ -65,7 +65,6 @@ const AlbumCard = ({ albums, navigation, deleteAlbum }) => {
 const styles = StyleSheet.create({
   list: {
     paddingTop: 10,
-    marginBottom: 55,
   },
   itemContainer: {
     flexDirection: "row",
