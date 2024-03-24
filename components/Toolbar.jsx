@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     backgroundColor: "rgba(0,0,0,0.8)",
+    paddingTop: 30,
   },
   icon: {
     marginRight: 10,

@@ -37,10 +37,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     backgroundColor: "rgba(0,0,0,0.8)",
-    height: 54,
+    height: 80,
+    paddingTop: 30,
   },
   icon: {
-    marginRight: 10,
+    fontSize: 32,
   },
 });
 
