@@ -50,7 +50,6 @@ const AlbumCard = ({ albums, navigation, deleteAlbum }) => {
                   confirmDeleteAlbum(index);
                 }}
               >
-                {/* <Text style={styles.deleteButtonText}>Delete</Text> */}
                 <Ionicons name="trash-outline" size={20} color="gray" />
               </TouchableOpacity>
             </View>
@@ -104,10 +103,6 @@ const styles = StyleSheet.create({
     width: 40,
     alignItems: "center",
   },
-  // deleteButtonText: {
-  //   color: "gray",
-  //   textAlign: "center",
-  // },
 });
 
 export default AlbumCard;

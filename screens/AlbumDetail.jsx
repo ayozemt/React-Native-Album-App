@@ -6,7 +6,6 @@ import {
   Image,
   ImageBackground,
   ScrollView,
-  Button,
   Dimensions,
 } from "react-native";
 import { useState, useContext } from "react";
@@ -60,10 +59,6 @@ const AlbumDetail = ({ navigation, route }) => {
         />
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
           {showForm && <AlbumEdit editAlbum={editAlbum} album={albumData} />}
-          {/* <Button
-            title={!showForm ? "Click here to edit this album" : "Hide Form"}
-            onPress={toggleShowForm}
-          /> */}
           <View style={styles.information}>
             <Image
               source={{ uri: albumData.photoUrl }}
@@ -105,13 +100,11 @@ const styles = StyleSheet.create({
   },
   scrollViewContent: {
     flexGrow: 1,
-    // justifyContent: "center",
   },
   information: {
     backgroundColor: "rgba(0,0,0,0.5)",
     flex: 1,
     paddingTop: 50,
-    // justifyContent: "center",
   },
   albumImage: {
     width: 300,
@@ -153,7 +146,6 @@ const styles = StyleSheet.create({
   ratingContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    // alignItems: "center",
     paddingLeft: 5,
   },
   starIcon: {

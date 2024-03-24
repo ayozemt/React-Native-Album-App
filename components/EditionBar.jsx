@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, TouchableOpacity, TextInput } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 const EditionBar = ({ navigation, onEditAlbum, showForm }) => {

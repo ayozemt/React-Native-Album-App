@@ -86,12 +86,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
     backgroundColor: "rgba(0,0,0,0.5)",
-    paddingBottom: 50,
   },
   h1: {
     color: "white",
     fontSize: 25,
     textAlign: "center",
+    paddingBottom: 20,
   },
   input: {
     height: 50,
@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: 80,
     alignItems: "center",
+    marginTop: 20,
   },
   submitButtonText: {
     color: "white",

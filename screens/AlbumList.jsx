@@ -4,10 +4,8 @@ import {
   StyleSheet,
   View,
   ImageBackground,
-  Button,
   Dimensions,
 } from "react-native";
-
 import AlbumCard from "../components/AlbumCard";
 import AlbumNew from "../components/AlbumNew";
 import { useState, useContext, useEffect } from "react";
@@ -73,16 +71,12 @@ const AlbumList = ({ navigation }) => {
       />
       <View style={styles.container}>
         {showForm && <AlbumNew addNewAlbum={addNewAlbum} />}
-        {/* <Button
-          title={!showForm ? "Click here to add a new album" : "Hide Form"}
-          onPress={toggleShowForm}
-        /> */}
         <AlbumCard
           albums={filteredAlbums}
           navigation={navigation}
           deleteAlbum={deleteAlbum}
         />
-        {/* <StatusBar style="auto" /> */}
+        <StatusBar style="auto" />
       </View>
     </ImageBackground>
   );
