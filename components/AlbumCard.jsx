@@ -63,6 +63,7 @@ const AlbumCard = ({ albums, navigation, deleteAlbum }) => {
 
 const styles = StyleSheet.create({
   list: {
+    flex: 1,
     paddingTop: 10,
   },
   itemContainer: {
