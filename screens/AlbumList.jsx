@@ -1,5 +1,5 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
+// import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, ImageBackground, Dimensions } from "react-native";
 import AlbumCard from "../components/AlbumCard";
 import AlbumNew from "../components/AlbumNew";
@@ -71,7 +71,7 @@ const AlbumList = ({ navigation }) => {
           navigation={navigation}
           deleteAlbum={deleteAlbum}
         />
-        <StatusBar style="light" backgroundColor="grey" />
+        {/* <StatusBar style="light" backgroundColor="grey" /> */}
       </View>
     </ImageBackground>
   );
