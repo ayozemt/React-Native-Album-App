@@ -56,9 +56,16 @@ const AlbumList = ({ navigation }) => {
 
   const exportAlbums = async () => {
     try {
-      const jsonAlbums = JSON.stringify(filteredAlbums);
-      const path = FileSystem.documentDirectory + "albums.json";
-      await FileSystem.writeAsStringAsync(path, jsonAlbums);
+      let csvData = "ID,Title,Artist,Year,PhotoURL,Rating\n";
+      filteredAlbums.forEach((album) => {
+        csvData += `${album.id},${album.title},${album.artist},${album.year},${album.photoUrl},${album.rating}\n`;
+      });
+
+      const path = FileSystem.documentDirectory + "albums.csv";
+      await FileSystem.writeAsStringAsync(path, csvData, {
+        encoding: FileSystem.EncodingType.UTF8,
+      });
+
       await Sharing.shareAsync(path);
     } catch (error) {
       console.error("Error exporting albums:", error);
