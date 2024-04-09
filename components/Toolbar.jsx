@@ -8,6 +8,7 @@ const Toolbar = ({
   onSortDescending,
   onSearch,
   showForm,
+  onExportAlbums,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -32,6 +33,14 @@ const Toolbar = ({
       <TouchableOpacity onPress={onSortDescending}>
         <Ionicons
           name="arrow-down"
+          size={24}
+          color="white"
+          style={styles.icon}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onExportAlbums}>
+        <Ionicons
+          name="share-outline"
           size={24}
           color="white"
           style={styles.icon}
@@ -80,7 +89,7 @@ const styles = StyleSheet.create({
     borderColor: "white",
     borderRadius: 5,
     paddingLeft: 10,
-    width: 230,
+    width: 200,
   },
   searchIcon: {
     marginRight: 5,

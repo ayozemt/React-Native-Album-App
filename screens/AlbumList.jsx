@@ -6,6 +6,8 @@ import AlbumNew from "../components/AlbumNew";
 import { useState, useContext, useEffect } from "react";
 import { AlbumContext } from "../context/album.context";
 import Toolbar from "../components/Toolbar";
+import * as FileSystem from "expo-file-system";
+import * as Sharing from "expo-sharing";
 
 const AlbumList = ({ navigation }) => {
   const { albums, setAlbums } = useContext(AlbumContext);
@@ -52,6 +54,18 @@ const AlbumList = ({ navigation }) => {
     setFilteredAlbums(filteredAlbums);
   };
 
+  const exportAlbums = async () => {
+    try {
+      const jsonAlbums = JSON.stringify(filteredAlbums);
+      const path = FileSystem.documentDirectory + "albums.json";
+      await FileSystem.writeAsStringAsync(path, jsonAlbums);
+      await Sharing.shareAsync(path);
+    } catch (error) {
+      console.error("Error exporting albums:", error);
+      alert("Error exporting albums. Please try again.");
+    }
+  };
+
   return (
     <ImageBackground
       source={require("../assets/background.jpeg")}
@@ -63,6 +77,7 @@ const AlbumList = ({ navigation }) => {
         onSortDescending={handleSortDescending}
         onSearch={handleSearch}
         showForm={showForm}
+        onExportAlbums={exportAlbums}
       />
       <View style={styles.container}>
         {showForm && <AlbumNew addNewAlbum={addNewAlbum} />}
