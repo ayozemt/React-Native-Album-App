@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-// import Albums from "../album-collection.json";
+import exampleAlbums from "../album-collection.json";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const AlbumContext = createContext();
@@ -13,7 +13,7 @@ export const AlbumProvider = ({ children }) => {
       if (jsonAlbums) {
         setAlbums(JSON.parse(jsonAlbums));
       } else {
-        setAlbums([]);
+        setAlbums(exampleAlbums);
       }
     } catch (error) {
       console.error("Error loading albums from AsyncStorage:", error);
