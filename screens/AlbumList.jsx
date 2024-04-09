@@ -56,9 +56,9 @@ const AlbumList = ({ navigation }) => {
 
   const exportAlbums = async () => {
     try {
-      let csvData = "ID,Title,Artist,Year,PhotoURL,Rating\n";
+      let csvData = "ID,Title,Artist,Year,Rating,PhotoUrl\n";
       filteredAlbums.forEach((album) => {
-        csvData += `${album.id},${album.title},${album.artist},${album.year},${album.photoUrl},${album.rating}\n`;
+        csvData += `${album.id},${album.title},${album.artist},${album.year},${album.rating},${album.photoUrl}\n`;
       });
 
       const path = FileSystem.documentDirectory + "albums.csv";
