@@ -34,7 +34,7 @@ AlbumApp is a React Native application developed with Expo, designed to help use
 
 An APK file in this link for easy installation on **Android** devices:
 
-[Try AlbumApp!](https://expo.dev/artifacts/eas/md2JdGZqFpwoV4fhDPdf9f.apk)
+[Try AlbumApp!](https://expo.dev/artifacts/eas/knrcAy1n4BPhRTjnUGQZxj.apk)
 
 Feel free to explore, contribute, or report any issues. Your feedback is valuable for further improvements!
 
